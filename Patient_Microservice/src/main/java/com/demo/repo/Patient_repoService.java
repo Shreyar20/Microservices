@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.demo.rest.Patient;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
-
+import javax.transaction.Transactional;
 
 @Slf4j
 @Service
@@ -13,10 +13,11 @@ public class Patient_repoService {
 	 @Autowired
      Patient_repo repo;
 	 
-//	 public Patient addPatient(Patient patient)
-//	 {
-//		 return repo.save(patient);
-//	 }
+	 @Transactional
+		public Patient patientDetail(Patient patient) {
+			return repo.save(patient);
+
+		}
 	 
 public List<Patient> getAllPatient()
 {
